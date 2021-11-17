@@ -45,34 +45,30 @@ class HomePage extends StatelessWidget {
 class CardMaker extends StatelessWidget {
   CardMaker({Key? key}) : super(key: key);
 
-  // final List<AllData> allData = [
-  //   AllData(ic: Icon(Icons.home), lab: 'Hello', am: 888),
-  //   AllData(ic: Icon(Icons.home), lab: 'Hello', am: 888),
-  //   AllData(ic: Icon(Icons.home), lab: 'Hello', am: 888),
-  //   AllData(ic: Icon(Icons.home), lab: 'Hello', am: 888),
-  //   AllData(ic: Icon(Icons.home), lab: 'Hello', am: 888),
-  //   AllData(ic: Icon(Icons.home), lab: 'Hello', am: 888),
-  //   AllData(ic: Icon(Icons.home), lab: 'Hello', am: 888),
-  //   AllData(ic: Icon(Icons.home), lab: 'Hello', am: 888),
-  // ];
+  final List<AllData> allData = [
+    AllData(ic: Icons.home, lab: 'Hello', am: 888),
+    AllData(ic: Icons.home, lab: 'Hello', am: 888),
+    AllData(ic: Icons.home, lab: 'Hello', am: 888),
+    AllData(ic: Icons.home, lab: 'Hello', am: 888),
+    AllData(ic: Icons.home, lab: 'Hello', am: 888),
+    AllData(ic: Icons.home, lab: 'Hello', am: 888),
+    AllData(ic: Icons.home, lab: 'Hello', am: 888),
+    AllData(ic: Icons.home, lab: 'Hello', am: 888),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: 6,
+      itemCount: allData.length,
       gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (context, int index) {
-        return Container(
-          children: [
-            cardMaker(icon: Icons.ac_unit, title: 'Home', amount: 79),
-            cardMaker(icon: Icons.ac_unit, title: 'Home', amount: 79),
-            cardMaker(icon: Icons.ac_unit, title: 'Home', amount: 79),
-            cardMaker(icon: Icons.ac_unit, title: 'Home', amount: 79),
-            cardMaker(icon: Icons.ac_unit, title: 'Home', amount: 79),
-            cardMaker(icon: Icons.ac_unit, title: 'Home', amount: 79),
-          ],
-        );
+        return Column(
+            children: allData
+                .map(
+                  (e) => cardMaker(icon: e.ic, title: e.lab, amount: e.am),
+                )
+                .toList());
       },
     );
   }
@@ -81,40 +77,41 @@ class CardMaker extends StatelessWidget {
 Widget cardMaker(
     {required IconData icon, required String title, required double amount}) {
   return Card(
-      elevation: 20,
-      color: Colors.pinkAccent,
-      shadowColor: Colors.black,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      margin: EdgeInsets.all(10),
-      child: Container(
-        padding: EdgeInsets.only(left: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(
-              icon,
-              color: Colors.white,
-              size: 40,
-            ),
-            Text(title, style: TextStyle(color: Colors.white, fontSize: 24)),
-            Text(
-              amount.toString(),
-              style: TextStyle(color: Colors.white, fontSize: 30),
-            ),
-          ],
-        ),
-      ));
+    elevation: 20,
+    color: Colors.pinkAccent,
+    shadowColor: Colors.black,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    margin: EdgeInsets.all(10),
+    child: Container(
+      padding: EdgeInsets.only(left: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 40,
+          ),
+          Text(title, style: TextStyle(color: Colors.white, fontSize: 24)),
+          Text(
+            amount.toString(),
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
-// class AllData {
-//   Icon ic;
-//   String lab;
-//   double am;
+class AllData {
+  IconData ic;
+  String lab;
+  double am;
 
-//   AllData({
-//     required this.ic,
-//     required this.lab,
-//     required this.am,
-//   });
-// }
+  AllData({
+    required this.ic,
+    required this.lab,
+    required this.am,
+  });
+}
