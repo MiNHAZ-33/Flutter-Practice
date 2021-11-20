@@ -26,7 +26,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black12,
       appBar: AppBar(
+        elevation: 0,
         title: Text(
           'Choose the cards from below',
           style: TextStyle(
@@ -35,7 +37,7 @@ class HomePage extends StatelessWidget {
             fontSize: 30,
           ),
         ),
-        backgroundColor: Colors.white60,
+        backgroundColor: Colors.transparent,
       ),
       body: CardMaker(),
     );
@@ -45,73 +47,45 @@ class HomePage extends StatelessWidget {
 class CardMaker extends StatelessWidget {
   CardMaker({Key? key}) : super(key: key);
 
-  final List<AllData> allData = [
-    AllData(ic: Icons.home, lab: 'Hello', am: 888),
-    AllData(ic: Icons.home, lab: 'Hello', am: 888),
-    AllData(ic: Icons.home, lab: 'Hello', am: 888),
-    AllData(ic: Icons.home, lab: 'Hello', am: 888),
-    AllData(ic: Icons.home, lab: 'Hello', am: 888),
-    AllData(ic: Icons.home, lab: 'Hello', am: 888),
-    AllData(ic: Icons.home, lab: 'Hello', am: 888),
-    AllData(ic: Icons.home, lab: 'Hello', am: 888),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: allData.length,
-      gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      itemBuilder: (context, int index) {
-        return Column(
-            children: allData
-                .map(
-                  (e) => cardMaker(icon: e.ic, title: e.lab, amount: e.am),
-                )
-                .toList());
-      },
+    return GridView.count(crossAxisCount: 2, children: [
+      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
+      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
+      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
+      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
+      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
+      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
+    ]);
+  }
+
+  Widget cardMaker(
+      {required IconData icon, required String title, required double amount}) {
+    return Card(
+      elevation: 20,
+      color: Colors.white,
+      shadowColor: Colors.black,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      margin: EdgeInsets.all(10),
+      child: Container(
+        padding: EdgeInsets.only(left: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(
+              icon,
+              color: Colors.black,
+              size: 40,
+            ),
+            Text(title, style: TextStyle(color: Colors.black87, fontSize: 24)),
+            Text(
+              amount.toString(),
+              style: TextStyle(color: Colors.black87, fontSize: 30),
+            ),
+          ],
+        ),
+      ),
     );
   }
-}
-
-Widget cardMaker(
-    {required IconData icon, required String title, required double amount}) {
-  return Card(
-    elevation: 20,
-    color: Colors.pinkAccent,
-    shadowColor: Colors.black,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    margin: EdgeInsets.all(10),
-    child: Container(
-      padding: EdgeInsets.only(left: 20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(
-            icon,
-            color: Colors.white,
-            size: 40,
-          ),
-          Text(title, style: TextStyle(color: Colors.white, fontSize: 24)),
-          Text(
-            amount.toString(),
-            style: TextStyle(color: Colors.white, fontSize: 30),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
-class AllData {
-  IconData ic;
-  String lab;
-  double am;
-
-  AllData({
-    required this.ic,
-    required this.lab,
-    required this.am,
-  });
 }
