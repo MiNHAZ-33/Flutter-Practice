@@ -50,12 +50,12 @@ class CardMaker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(crossAxisCount: 2, children: [
-      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
-      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
-      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
-      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
-      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
-      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 70),
+      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 700),
+      cardMaker(icon: Icons.smoking_rooms, title: 'Gas bill', amount: 60),
+      cardMaker(icon: Icons.water, title: 'Water Bill', amount: 80),
+      cardMaker(icon: Icons.home, title: ' ABC ', amount: 900),
+      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 40),
+      cardMaker(icon: Icons.home, title: 'Home Bill', amount: 30),
     ]);
   }
 
