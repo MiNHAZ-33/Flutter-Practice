@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Solitaire',
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
+        backgroundColor: Color(0xffD5E6E3),
       ),
       home: HomePage(),
     );
@@ -26,7 +27,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
+        backgroundColor: Color(0xff35837B),
         title: Text(
           'Solitaire',
           style: TextStyle(
@@ -95,7 +98,7 @@ class HomePage extends StatelessWidget {
       width: 200,
       child: Card(
         elevation: 10,
-        color: Color(0xff151B54),
+        color: Color(0xff1AAAF6),
         shape: RoundedRectangleBorder(
           side: BorderSide(color: Colors.black, width: 3),
           borderRadius: BorderRadius.all(
