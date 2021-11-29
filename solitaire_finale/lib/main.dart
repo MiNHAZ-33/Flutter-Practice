@@ -48,6 +48,7 @@ class HomePage extends StatelessWidget {
                 cardMaker(),
                 cardMaker(),
                 cardMaker(),
+                cardMaker(),
               ],
             ),
             Row(
@@ -55,12 +56,14 @@ class HomePage extends StatelessWidget {
               children: [
                 cardMaker_1(),
                 Stack(
+                  clipBehavior: Clip.none,
                   children: [
                     Container(child: cardMaker()),
                     Positioned(top: 30, child: cardMaker_1()),
                   ],
                 ),
                 Stack(
+                  clipBehavior: Clip.none,
                   children: [
                     Container(child: cardMaker()),
                     Positioned(top: 30, child: cardMaker()),
@@ -68,6 +71,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 Stack(
+                  clipBehavior: Clip.none,
                   children: [
                     Container(child: cardMaker()),
                     Positioned(top: 30, child: cardMaker()),
@@ -76,6 +80,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 Stack(
+                  clipBehavior: Clip.none,
                   children: [
                     Container(child: cardMaker()),
                     Positioned(top: 30, child: cardMaker()),
@@ -85,7 +90,8 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ],
-            )
+            ),
+            SizedBox(height: 300)
           ],
         ),
       ),

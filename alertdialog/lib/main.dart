@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               showDialog(
-                // barrierColor: Colors.greenAccent[50],
+                barrierColor: Colors.greenAccent,
                 barrierDismissible: false,
                 context: context,
                 builder: (context) => AlertDialog(
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
                   actions: [
                     for (int i = 0; i < 5; i++) Text('I am option number $i'),
                   ],
-                  content: OutlineButton(
+                  content: OutlinedButton(
                     onPressed: () => Navigator.pop(context),
                     child: Text('Confirmed'),
                   ),
