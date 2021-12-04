@@ -49,6 +49,7 @@ class HomePage extends StatelessWidget {
                 child: Card(
                   elevation: 10,
                   color: Colors.pink,
+                  shape: ,
                   child: Center(
                     child: Text(
                       'Item $index',
