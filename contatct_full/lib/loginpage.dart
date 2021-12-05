@@ -10,7 +10,7 @@ class LogInPage extends StatefulWidget {
 }
 
 class _LogInPageState extends State<LogInPage> {
-  List<ContactData> newMsg = [];
+  late ContactData newMsg;
 
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -21,7 +21,7 @@ class _LogInPageState extends State<LogInPage> {
     final newMSG = ContactData(
         name: name, email: email, subject: subject, messages: messages);
     setState(() {
-      newMsg.add(newMSG);
+      newMsg = newMSG;
     });
   }
 
@@ -58,6 +58,7 @@ class _LogInPageState extends State<LogInPage> {
             TextField(
               decoration: InputDecoration(
                 label: Text('Messages'),
+                hintMaxLines: 5,
               ),
               controller: msgController,
             ),
@@ -68,7 +69,7 @@ class _LogInPageState extends State<LogInPage> {
               onPressed: () {
                 addData(nameController.text, emailController.text,
                     subjectController.text, msgController.text);
-                Navigator.of(context).pushNamed('/messages');
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Messages(newMsg)));
               },
               child: Text('Send Mail'),
             ),
