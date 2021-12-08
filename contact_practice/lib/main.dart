@@ -30,6 +30,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Container(
+          height: 200,
+          margin: EdgeInsets.fromLTRB(20, 0, 0, 20),
+          child: Text('Hi'),
+        ),
+      ),
       body: Center(
         child: Column(
           children: [

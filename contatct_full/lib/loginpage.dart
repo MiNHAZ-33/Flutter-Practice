@@ -3,15 +3,14 @@ import 'package:contatct_full/messages.dart';
 import 'package:flutter/material.dart';
 
 class LogInPage extends StatefulWidget {
-  const LogInPage({Key? key}) : super(key: key);
+  LogInPage(this.newMsg);
+    ContactData newMsg;
 
   @override
   _LogInPageState createState() => _LogInPageState();
 }
 
 class _LogInPageState extends State<LogInPage> {
-  late ContactData newMsg;
-
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final subjectController = TextEditingController();
@@ -69,7 +68,8 @@ class _LogInPageState extends State<LogInPage> {
               onPressed: () {
                 addData(nameController.text, emailController.text,
                     subjectController.text, msgController.text);
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Messages(newMsg)));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => Messages(newMsg)));
               },
               child: Text('Send Mail'),
             ),
