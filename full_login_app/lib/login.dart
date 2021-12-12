@@ -58,9 +58,9 @@ class _LogInPageState extends State<LogInPage> {
                   controller: nameController,
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 35,
-              ),
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height / 50,
+              // ),
               Container(
                 padding: EdgeInsets.only(left: 20, right: 20),
                 child: TextField(
@@ -76,9 +76,9 @@ class _LogInPageState extends State<LogInPage> {
                   controller: emailController,
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 35,
-              ),
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height / 50,
+              // ),
               Container(
                 padding: EdgeInsets.only(left: 20, right: 20),
                 child: TextField(
