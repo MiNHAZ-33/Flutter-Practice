@@ -8,27 +8,16 @@ class ItemsOfOverviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context);
-    return GridTile(
-      child: Image.network(product.imgURL),
-      footer: GridTileBar(
-        backgroundColor: Colors.blueGrey.shade400,
-        leading: IconButton(
-          onPressed: () {
-            // product.toggleFavoritesStatus();
-          },
-          icon: product.isFav
-              ? Icon(Icons.favorite_outline)
-              : Icon(Icons.five_g_sharp),
-          color: Theme.of(context).accentColor,
-        ),
-        trailing: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.shopping_cart),
-          color: Theme.of(context).accentColor,
-        ),
-        title: Text(product.title),
-      ),
-    );
+    final product = Provider.of<Products>(context);
+    return GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
+        itemCount: product.items.length,
+        itemBuilder: (context, index) {
+          return ChangeNotifierProvider.value(
+            value: product.items[index],
+            child: Image.network(product.items[index].imgURL),
+          );
+        });
   }
 }

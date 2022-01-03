@@ -1,4 +1,8 @@
+import 'package:eshop_project/provider/cart.dart';
+import 'package:eshop_project/screen/cartscreen.dart';
+import 'package:eshop_project/widget/badge.dart';
 import 'package:eshop_project/widget/product_grid.dart';
+import 'package:provider/provider.dart';
 
 import '/widget/appdrawer.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +28,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('E-Shoppers'),
+        title: const Text('E-Shoppers'),
         actions: [
           PopupMenuButton(
             onSelected: (selectedValue) {
@@ -47,9 +51,18 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
               ),
             ],
           ),
+          Consumer<Cart>(
+            builder: (context, cart, child) =>
+                Badge(value: cart.itmCount, child: child as Widget),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CartScreen.routeName);
+                },
+                icon: Icon(Icons.shopping_cart)),
+          )
         ],
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: ProductGrid(_showFavOnly),
     );
   }

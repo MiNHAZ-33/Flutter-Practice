@@ -1,3 +1,4 @@
+import 'package:eshop_project/provider/cart.dart';
 import 'package:eshop_project/provider/product.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,10 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context, );
+    final product = Provider.of<Product>(
+      context,
+    );
+    final cart = Provider.of<Cart>(context);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GestureDetector(
@@ -34,12 +38,20 @@ class ProductItem extends StatelessWidget {
                 product.toggleFavoritesStatus();
               },
               icon: product.isFav
-                  ? Icon(Icons.favorite_outline)
-                  : Icon(Icons.five_g_sharp),
+                  ? Icon(Icons.favorite_rounded)
+                  : Icon(Icons.favorite_outline),
               color: Theme.of(context).accentColor,
             ),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                cart.addItem(product.id, product.price, product.title);
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Item added in your cart'),
+                    action: SnackBarAction(label: 'Undo', onPressed: (){}),
+                  ),
+                );
+              },
               icon: Icon(Icons.shopping_cart),
               color: Theme.of(context).accentColor,
             ),
