@@ -1,3 +1,4 @@
+import 'package:eshop_project/screen/oreder_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -41,7 +42,9 @@ class AppDrawer extends StatelessWidget {
             color: Theme.of(context).accentColor,
           ),
           title: Text('Orders'),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed(OrdersScreen.routeName);
+          },
         ),
         Divider(),
         ListTile(
