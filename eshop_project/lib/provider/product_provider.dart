@@ -55,4 +55,12 @@ class Products with ChangeNotifier {
   List<Product> get getFavorites {
     return _items.where((element) => element.isFav).toList();
   }
+
+  //delete product from Manage Product
+  void deleteProduct(String id) {
+    final alreadyMadeProduct =
+        _items.indexWhere((element) => element.id == id);
+    _items.removeAt(alreadyMadeProduct);
+    notifyListeners();
+  }
 }

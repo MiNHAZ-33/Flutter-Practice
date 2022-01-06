@@ -1,5 +1,6 @@
 import 'package:eshop_project/provider/cart.dart';
 import 'package:eshop_project/provider/orders.dart';
+import 'package:eshop_project/widget/appdrawer.dart';
 import 'package:eshop_project/widget/cart_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ class CartScreen extends StatelessWidget {
         title: Text('Your Cart'),
         centerTitle: true,
       ),
+      drawer: AppDrawer(),
       body: Column(
         children: [
           Card(
@@ -28,7 +30,7 @@ class CartScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 Chip(
-                  label: Text('${cart.totalAmount}'),
+                  label: Text('${cart.totalAmount.toStringAsFixed(2)}'),
                 ),
                 const SizedBox(
                   width: 5,

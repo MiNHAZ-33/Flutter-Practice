@@ -19,7 +19,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Your orders'),
-          automaticallyImplyLeading: false,
           centerTitle: true,
         ),
         drawer: AppDrawer(),

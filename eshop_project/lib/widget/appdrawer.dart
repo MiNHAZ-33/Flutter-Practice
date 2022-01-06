@@ -1,4 +1,5 @@
 import 'package:eshop_project/screen/oreder_screen.dart';
+import 'package:eshop_project/screen/user_product_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -33,7 +34,9 @@ class AppDrawer extends StatelessWidget {
             color: Theme.of(context).accentColor,
           ),
           title: Text('SHop'),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed('/');
+          },
         ),
         Divider(),
         ListTile(
@@ -53,7 +56,9 @@ class AppDrawer extends StatelessWidget {
             color: Theme.of(context).accentColor,
           ),
           title: Text('Manage Product'),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(UserProductScreen.routeName);
+          },
         ),
         Divider(),
         ListTile(
