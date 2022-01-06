@@ -1,4 +1,5 @@
 import 'package:eshop_project/provider/product_provider.dart';
+import 'package:eshop_project/screen/edit_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,9 +17,8 @@ class UserProductItems extends StatelessWidget {
     return ListTile(
       title: Text(title),
       leading: CircleAvatar(
-        child: Image.network(
+        backgroundImage: NetworkImage(
           imgUrl,
-          fit: BoxFit.contain,
         ),
       ),
       trailing: Container(
@@ -26,7 +26,10 @@ class UserProductItems extends StatelessWidget {
         child: Row(
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed(EditProductScreen.routeName, arguments: id);
+              },
               icon: Icon(Icons.edit),
             ),
             IconButton(

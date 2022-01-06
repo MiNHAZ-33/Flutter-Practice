@@ -58,9 +58,27 @@ class Products with ChangeNotifier {
 
   //delete product from Manage Product
   void deleteProduct(String id) {
-    final alreadyMadeProduct =
-        _items.indexWhere((element) => element.id == id);
+    final alreadyMadeProduct = _items.indexWhere((element) => element.id == id);
     _items.removeAt(alreadyMadeProduct);
+    notifyListeners();
+  }
+
+  void addProduct(Product addedProducts) {
+    final addedProd = Product(
+        id: DateTime.now().toString(),
+        title: addedProducts.title,
+        description: addedProducts.description,
+        price: addedProducts.price,
+        imgURL: addedProducts.imgURL);
+
+    _items.add(addedProd);
+    notifyListeners();
+  }
+
+  void editProduct(String id, Product editedProd) {
+    final prodIndex = _items.indexWhere((element) => element.id == id);
+
+    _items[prodIndex] = editedProd;
     notifyListeners();
   }
 }
