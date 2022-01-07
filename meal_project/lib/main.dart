@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:meal_project/catagories_screen.dart';
-import 'package:meal_project/categories_meal.dart';
+import 'screens/catagories_screen.dart';
+import 'screens/categories_meal.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({ Key? key }) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,8 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
       ),
       routes: {
-        CategoryMealScreen.routeName : (context) => CategoryMealScreen(),
+        CategoryMealScreen.routeName: (context) => CategoryMealScreen(),
       },
     );
   }
 }
-  
