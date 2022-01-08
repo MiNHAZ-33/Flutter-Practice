@@ -10,9 +10,13 @@ class UserProductScreen extends StatelessWidget {
 
   static const routeName = '/user-screen';
 
+  Future<void> _refresher(BuildContext context) async {
+    Provider.of<Products>(context, listen: false).fetchAndShowProducts();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final productData = Provider.of<Products>(context);
+    // final productData = Provider.of<Products>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Product'),
@@ -26,12 +30,48 @@ class UserProductScreen extends StatelessWidget {
         ],
       ),
       drawer: AppDrawer(),
-      body: ListView.builder(
-          itemCount: productData.items.length,
-          itemBuilder: (context, index) => UserProductItems(
-              id: productData.items[index].id,
-              imgUrl: productData.items[index].imgURL,
-              title: productData.items[index].title)),
+      body: FutureBuilder(
+          future: _refresher(context),
+          builder: (context, snapshot) {
+            return snapshot.connectionState == ConnectionState.waiting
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : RefreshIndicator(
+                    onRefresh: () => _refresher(context),
+                    child: Consumer<Products>(
+                      builder: (context, productData, _) => productData
+                              .items.isEmpty
+                          ? Center(
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.info,
+                                    color: Colors.red,
+                                  ),
+                                  Text('No product is added by this user'),
+                                ],
+                              ),
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  ListView.builder(
+                                    itemCount: productData.items.length,
+                                    itemBuilder: (context, index) =>
+                                        UserProductItems(
+                                      id: productData.items[index].id,
+                                      imgUrl: productData.items[index].imgURL,
+                                      title: productData.items[index].title,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                    ),
+                  );
+          }),
     );
   }
 }

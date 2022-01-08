@@ -1,4 +1,5 @@
 import 'package:eshop_project/provider/cart.dart';
+import 'package:eshop_project/provider/product_provider.dart';
 import 'package:eshop_project/screen/cartscreen.dart';
 import 'package:eshop_project/widget/badge.dart';
 import 'package:eshop_project/widget/product_grid.dart';
@@ -21,6 +22,17 @@ class ProductOverviewScreen extends StatefulWidget {
 
 class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   var _showFavOnly = false;
+  var isInIt = true;
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    if (isInIt) {
+      Provider.of<Products>(context).fetchAndShowProducts();
+    }
+    isInIt = false;
+    super.didChangeDependencies();
+  }
 
   // const ProductOverviewScreen({ Key? key }) : super(key: key);
   @override
