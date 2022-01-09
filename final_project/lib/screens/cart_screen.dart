@@ -1,18 +1,18 @@
-import 'package:final_project/provider/places_list.dart';
+import 'package:final_project/provider/cart.dart';
+import 'package:final_project/widgets/cart_items.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PlacesDetailedScreen extends StatelessWidget {
-  const PlacesDetailedScreen({Key? key}) : super(key: key);
+class CartScreen extends StatelessWidget {
+  const CartScreen({Key? key}) : super(key: key);
 
-  static const routeName = '/places-details';
+  static const routeName = '/cart-screen';
 
   @override
   Widget build(BuildContext context) {
-    final detailed_id = ModalRoute.of(context)!.settings.arguments as String;
-    final details = Provider.of<PlacesList>(context).findById(detailed_id);
-
+    final cartScreenItems = Provider.of<Cart>(context).items;
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         shape: RoundedRectangleBorder(
@@ -22,15 +22,12 @@ class PlacesDetailedScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Go - Fly',
+          'Your Orders',
           style: Theme.of(context).textTheme.headline1,
         ),
         centerTitle: true,
       ),
-      body: Container(
-        margin: EdgeInsets.all(10),
-        child: Card(elevation: 10, child: Image.network(details.imageUrl)),
-      ),
+      body: CartItemBuilder(),
     );
   }
 }

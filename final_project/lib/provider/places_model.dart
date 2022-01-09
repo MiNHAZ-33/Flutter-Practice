@@ -3,12 +3,13 @@ class Places {
   String title;
   String imageUrl;
   int duration;
-  bool isFav;
+  int price;
 
   Places(
       {required this.id,
       required this.title,
       required this.imageUrl,
       required this.duration,
-      this.isFav = false});
+      required this.price
+      });
 }

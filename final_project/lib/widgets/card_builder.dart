@@ -1,4 +1,6 @@
+import 'package:final_project/provider/cart.dart';
 import 'package:final_project/screens/Places_detailed_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '/provider/places_list.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ class CardBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final placesList = Provider.of<PlacesList>(context).places;
+    final cart = Provider.of<Cart>(context);
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(PlacesDetailedScreen.routeName,
@@ -41,24 +44,33 @@ class CardBuilder extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(placesList[index].title),
+                  Text(
+                    placesList[index].title,
+                    style: Theme.of(context).textTheme.headline2,
+                  ),
                   Container(
-                      width: 70,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Icon(Icons.timer),
-                          Text(
-                            placesList[index].duration.toString() + ' Days',
-                          ),
-                        ],
-                      )),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.favorite),
+                    width: 70,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(Icons.timer),
+                        Text(
+                          placesList[index].duration.toString() + ' Days',
+                          style: Theme.of(context).textTheme.headline4,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text(
+                    placesList[index].price.toString() + ' BDT',
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      cart.addItem(placesList[index].id,
+                          placesList[index].price, placesList[index].title);
+                    },
                     icon: Icon(Icons.shop),
                   ),
                 ],
