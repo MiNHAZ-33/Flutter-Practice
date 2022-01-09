@@ -49,10 +49,25 @@ class CartsItem extends StatelessWidget {
       onDismissed: (direction) =>
           Provider.of<Cart>(context, listen: false).removeCart(productId),
       child: Card(
-        child: ListTile(
-          title: Text(title),
-          subtitle: Text('Total: BDT $price'),
-          trailing: Text('$quantity x'),
+        // child: ListTile(
+        //   title: Text(title),
+        //   subtitle: Text('Total: BDT $price'),
+        //   trailing: Text('$quantity x'),
+        // ),
+        elevation: 10,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              child: Text(title),
+            ),
+            Container(
+              child: Text('Total : BDT $price '),
+            ),
+            Container(
+              child: Text('$quantity x'),
+            ),
+          ],
         ),
       ),
     );

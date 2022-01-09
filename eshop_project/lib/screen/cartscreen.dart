@@ -26,7 +26,7 @@ class CartScreen extends StatelessWidget {
               children: [
                 Text(
                   'Total',
-                  style: Theme.of(context).textTheme.headline6,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const Spacer(),
                 Chip(

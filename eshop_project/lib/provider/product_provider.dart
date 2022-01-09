@@ -60,8 +60,14 @@ class Products with ChangeNotifier {
   }
 
   //delete product from Manage Product
-  void deleteProduct(String id) {
+  Future<void> deleteProduct(String id) async {
     final alreadyMadeProduct = _items.indexWhere((element) => element.id == id);
+
+    final url =
+        'https://shop-971ce-default-rtdb.firebaseio.com/product/$id.json';
+
+    await http.delete(Uri.parse(url));
+
     _items.removeAt(alreadyMadeProduct);
     notifyListeners();
   }
@@ -94,11 +100,23 @@ class Products with ChangeNotifier {
     }
   }
 
-  void editProduct(String id, Product editedProd) {
+  Future<void> editProduct(String id, Product editedProd) async {
     final prodIndex = _items.indexWhere((element) => element.id == id);
-
-    _items[prodIndex] = editedProd;
-    notifyListeners();
+    final url =
+        'https://shop-971ce-default-rtdb.firebaseio.com/product/$id.json';
+    try {
+      final response = await http.put(Uri.parse(url),
+          body: json.encode({
+            'title': editedProd.title,
+            'description': editedProd.description,
+            'price': editedProd.price,
+            'imageUrl': editedProd.imgURL,
+          }));
+      _items[prodIndex] = editedProd;
+      notifyListeners();
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<void> fetchAndShowProducts() async {
@@ -106,7 +124,7 @@ class Products with ChangeNotifier {
       final url =
           'https://shop-971ce-default-rtdb.firebaseio.com/' + 'product.json';
 
-      final response = await http.get(Uri.parse(url));
+      final response = await http.get(Uri.parse(url) );
       final fetchData = json.decode(response.body);
       final List<Product> loadedData = [];
 

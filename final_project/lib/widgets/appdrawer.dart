@@ -6,7 +6,10 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Color(0xffC887FF),
+      
       child: ListView(
+        
         children: [
           ListTile(
             leading: Icon(Icons.landscape),
