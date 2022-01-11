@@ -25,7 +25,7 @@ class PlacesOverViewScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Go - Fly',
+          'Trippy-Fy',
           style: Theme.of(context).textTheme.headline1,
         ),
         centerTitle: true,

@@ -6,9 +6,16 @@ import '/provider/places_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CardBuilder extends StatelessWidget {
+class CardBuilder extends StatefulWidget {
   final index;
-  const CardBuilder({Key? key, required this.index}) : super(key: key);
+  CardBuilder({Key? key, required this.index}) : super(key: key);
+
+  @override
+  State<CardBuilder> createState() => _CardBuilderState();
+}
+
+class _CardBuilderState extends State<CardBuilder> {
+  var isAdded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,7 @@ class CardBuilder extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(PlacesDetailedScreen.routeName,
-            arguments: placesList[index].id);
+            arguments: placesList[widget.index].id);
       },
       borderRadius: BorderRadius.circular(15),
       splashColor: Theme.of(context).accentColor,
@@ -35,7 +42,7 @@ class CardBuilder extends StatelessWidget {
                 topRight: Radius.circular(15),
               ),
               child: Image.network(
-                placesList[index].imageUrl,
+                placesList[widget.index].imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -45,7 +52,7 @@ class CardBuilder extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    placesList[index].title,
+                    placesList[widget.index].title,
                     style: Theme.of(context).textTheme.headline2,
                   ),
                   Container(
@@ -56,22 +63,34 @@ class CardBuilder extends StatelessWidget {
                       children: [
                         Icon(Icons.timer),
                         Text(
-                          placesList[index].duration.toString() + ' Days',
-                          style: Theme.of(context).textTheme.headline4,
+                          placesList[widget.index].duration.toString() +
+                              ' Days',
+                          // style: Theme.of(context).textTheme.headline4,
+                          style: GoogleFonts.oxygen(fontSize: 10),
                         ),
                       ],
                     ),
                   ),
                   Text(
-                    placesList[index].price.toString() + ' BDT',
+                    placesList[widget.index].price.toString() + ' BDT',
                     style: Theme.of(context).textTheme.headline4,
                   ),
                   IconButton(
                     onPressed: () {
-                      cart.addItem(placesList[index].id,
-                          placesList[index].price, placesList[index].title);
+                      cart.addItem(
+                        placesList[widget.index].id,
+                        placesList[widget.index].price,
+                        placesList[widget.index].title,
+                        placesList[widget.index].imageUrl,
+                      );
+
+                      setState(() {
+                        isAdded = !isAdded;
+                      });
                     },
-                    icon: Icon(Icons.shop),
+                    icon: isAdded
+                        ? Icon(Icons.done_outline_outlined)
+                        : Icon(Icons.shop),
                   ),
                 ],
               ),

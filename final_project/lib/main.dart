@@ -27,11 +27,12 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-          title: 'Go Fly',
+          title: 'Trippy-Fy',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primaryColor: Color(0xff3E0798),
-            backgroundColor: Color(0xffC887FF).withOpacity(0.45),
+            backgroundColor: Color(0xffFFEFD7),
+            //backgroundColor: Color(0xffC887FF).withOpacity(0.45),
             accentColor: Color(0xff00BCEF),
             textTheme: TextTheme(
               headline1: GoogleFonts.oxygen(fontSize: 24, color: Colors.white),
