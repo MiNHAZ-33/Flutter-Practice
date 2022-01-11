@@ -22,7 +22,7 @@ class CartScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Your Orders',
+          'Your Cart',
           style: Theme.of(context).textTheme.headline1,
         ),
         centerTitle: true,

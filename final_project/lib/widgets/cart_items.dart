@@ -1,4 +1,6 @@
 import 'package:final_project/provider/cart.dart';
+import 'package:final_project/provider/order.dart';
+import 'package:final_project/screens/order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +11,7 @@ class CartItemBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
+    final order = Provider.of<Order>(context, listen: false);
     return Column(
       children: [
         Flexible(
@@ -43,8 +46,10 @@ class CartItemBuilder extends StatelessWidget {
                       // Text(cart.items.values.toList()[index].title),
                       Padding(
                         padding: const EdgeInsets.all(12),
-                        child: Text(cart.items.values.toList()[index].title,
-                            style: Theme.of(context).textTheme.headline2),
+                        child: Chip(
+                          label: Text(cart.items.values.toList()[index].title,
+                              style: Theme.of(context).textTheme.headline2),
+                        ),
                       ),
                       Spacer(),
                       Padding(
@@ -103,7 +108,12 @@ class CartItemBuilder extends StatelessWidget {
                         //fixedSize: const Size(300, 100),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30))),
-                    onPressed: () {},
+                    onPressed: () {
+                      order.addOrder(
+                          cart.items.values.toList(), cart.totalAmount);
+                      Navigator.of(context).pushNamed(OrderScreen.routeName);
+                      cart.items.clear();
+                    },
                     child: Text(
                       'Confirm',
                       style:

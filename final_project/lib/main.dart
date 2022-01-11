@@ -1,7 +1,9 @@
 import 'package:final_project/provider/cart.dart';
+import 'package:final_project/provider/order.dart';
 import 'package:final_project/provider/places_list.dart';
 import 'package:final_project/screens/Places_detailed_screen.dart';
 import 'package:final_project/screens/cart_screen.dart';
+import 'package:final_project/screens/order_screen.dart';
 import 'package:provider/provider.dart';
 
 import './screens/PlacesOverViewScreen.dart';
@@ -24,6 +26,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => Cart(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Order(),
         ),
       ],
       child: MaterialApp(
@@ -48,6 +53,7 @@ class MyApp extends StatelessWidget {
           routes: {
             PlacesDetailedScreen.routeName: (context) => PlacesDetailedScreen(),
             CartScreen.routeName: (context) => CartScreen(),
+            OrderScreen.routeName: (context) => OrderScreen(),
           }),
     );
   }
