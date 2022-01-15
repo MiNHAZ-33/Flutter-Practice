@@ -1,5 +1,5 @@
 import 'package:final_project/provider/cart.dart';
-import 'package:final_project/screens/Places_detailed_screen.dart';
+import '/screens/Places_detailed_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '/provider/places_list.dart';

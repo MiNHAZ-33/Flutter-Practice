@@ -1,4 +1,4 @@
-import 'package:final_project/provider/cart.dart';
+import '/provider/cart.dart';
 import 'package:flutter/cupertino.dart';
 
 class OrderedTickets {
@@ -21,18 +21,21 @@ class Order with ChangeNotifier {
     return [..._item];
   }
 
+  int x = 0;
+  void getamount(int total) {
+    x = total;
+  }
+
   void addOrder(List<CartItem> cartList, int total) {
-      _item.insert(
-        0,
-        OrderedTickets(
-          id: DateTime.now().toString(),
-          amount: total,
-          tickets: cartList,
-          time: DateTime.now(),
-        ),
-      );
-      notifyListeners();
-    
-    
+    _item.insert(
+      0,
+      OrderedTickets(
+        id: DateTime.now().toString(),
+        amount: total,
+        tickets: cartList,
+        time: DateTime.now(),
+      ),
+    );
+    notifyListeners();
   }
 }

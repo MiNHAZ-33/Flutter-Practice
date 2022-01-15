@@ -1,6 +1,6 @@
-import 'package:final_project/provider/cart.dart';
-import 'package:final_project/provider/places_list.dart';
-import 'package:final_project/screens/cart_screen.dart';
+import '/provider/cart.dart';
+import '/provider/places_list.dart';
+import '/screens/cart_screen.dart';
 import '/widgets/card_builder.dart';
 import 'package:provider/provider.dart';
 

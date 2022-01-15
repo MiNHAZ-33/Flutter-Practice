@@ -1,5 +1,5 @@
-import 'package:final_project/provider/cart.dart';
-import 'package:final_project/widgets/cart_items.dart';
+import '/provider/cart.dart';
+import '/widgets/cart_items.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

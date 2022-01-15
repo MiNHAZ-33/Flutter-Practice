@@ -1,6 +1,6 @@
-import 'package:final_project/provider/cart.dart';
-import 'package:final_project/provider/order.dart';
-import 'package:final_project/screens/order_screen.dart';
+import '/provider/cart.dart';
+import '/provider/order.dart';
+import '/screens/order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -97,9 +97,9 @@ class CartItemBuilder extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 15,
-                ),
+                // SizedBox(
+                //   width: 15,
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(12),
                   child: ElevatedButton(
@@ -111,13 +111,21 @@ class CartItemBuilder extends StatelessWidget {
                     onPressed: () {
                       order.addOrder(
                           cart.items.values.toList(), cart.totalAmount);
-                      Navigator.of(context).pushNamed(OrderScreen.routeName);
-                      cart.items.clear();
+                      order.getamount(cart.totalAmount);
+
+                      cart.clear();
+                      //Navigator.pop(context);
+                      Scaffold.of(context).showSnackBar(
+                        SnackBar(
+                          duration: Duration(seconds: 1),
+                          content: Text('Order Confirmed'),
+                        ),
+                      );
                     },
                     child: Text(
                       'Confirm',
                       style:
-                          GoogleFonts.lato(color: Colors.white, fontSize: 15),
+                          GoogleFonts.lato(color: Colors.white, fontSize: 10),
                     ),
                   ),
                 ),

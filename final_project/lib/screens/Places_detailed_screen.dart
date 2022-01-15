@@ -1,4 +1,4 @@
-import 'package:final_project/provider/places_list.dart';
+import '/provider/places_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
