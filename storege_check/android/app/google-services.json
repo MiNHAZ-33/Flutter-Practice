@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "701933348339",
+    "project_id": "storage-check-3bcc0",
+    "storage_bucket": "storage-check-3bcc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701933348339:android:d0ac837cc71f931c251e86",
+        "android_client_info": {
+          "package_name": "com.example.storege_check"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701933348339-5dt1qu83jj2vfdl109hp7gbkubhd3mvh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF5hJ1t41Um37NTRTR9O0dNq76_J6qhXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701933348339-5dt1qu83jj2vfdl109hp7gbkubhd3mvh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
